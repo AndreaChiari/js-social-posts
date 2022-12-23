@@ -112,8 +112,8 @@ for(let i=0; i < elements.length; i++ ){
      for(let i=0; i < button.length; i++){
        button[i].addEventListener("click", function(){
          button[i].classList.add("like-button--liked");
-          const dio = elements[i].likes
-          console.log(dio)
+          const test = elements[i].likes
+          console.log(test)
        
         })}
       
