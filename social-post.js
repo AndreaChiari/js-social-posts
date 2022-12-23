@@ -9,7 +9,7 @@ const elements = [
             name:'Ryan Reinolds',
             foto: 'img/austin-wade-X6Uj51n5CE8-unsplash.jpg',
             date: '05-03-2022',
-            text: 'history is build by man',
+            text: 'history is built by man',
             coreImg: 'img/mr-cup-fabien-barral-Fo5dTm6ID1Y-unsplash.jpg',
             likes: 23
         },
@@ -91,7 +91,7 @@ for(let i=0; i < elements.length; i++ ){
         <span class="like-button__label">Mi Piace</span>
         </button>
           </div>
-          <div class="likes__counter">Piace a <b id="like-counter-1" class="js-likes-counter">${cards.likes}</b> persone</div>
+          <div class="likes__counter">Piace a <b id="likecounter${cards.id}" class="js-likes-counter">${cards.likes}</b> persone</div>
           </div>
           </div>
           </div>`
@@ -99,9 +99,9 @@ for(let i=0; i < elements.length; i++ ){
             
             container.innerHTML = card
             
-            
+    const counters = document.getElementById("likecounter${cards.id}")      
     const button = document.querySelectorAll(".like-button")
-    const contatori = document.querySelectorAll(".js-likes-counter")
+    const contatore = document.querySelectorAll(".js-likes-counter")
 
 // aggiungo un event listener per modificare il button like
 
@@ -112,9 +112,12 @@ for(let i=0; i < elements.length; i++ ){
      for(let i=0; i < button.length; i++){
        button[i].addEventListener("click", function(){
          button[i].classList.add("like-button--liked");
-          const test = elements[i].likes
-          console.log(test)
-       
+          const numberIncrease = elements[i].likes++
+          contatore[i].innerText = numberIncrease+1
+          console.log(numberIncrease)
+
+          
+         
         })}
       
 
