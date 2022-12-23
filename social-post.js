@@ -40,9 +40,9 @@ const elements = [
             coreImg: 'img/garrett-parker-DlkF4-dbCOU-unsplash.jpg',
             likes: 23
            },
-        
-      
-]
+           
+          ]
+         
 
 //prendo gli elementi necessari dal DOM
 const container = document.getElementById('container')
@@ -108,18 +108,15 @@ for(let i=0; i < elements.length; i++ ){
     let textButton = document.querySelectorAll(".like-button__label")
     console.log(textButton)
 
-    console.log(button) 
-    elements.forEach((element) =>{
-      let likeIndex = element.likes
-     console.log(likeIndex)
-     
+      
      for(let i=0; i < button.length; i++){
        button[i].addEventListener("click", function(){
          button[i].classList.add("like-button--liked");
+          const dio = elements[i].likes
+          console.log(dio)
+       
         })}
-      });
-         
-         
+      
 
     
 
