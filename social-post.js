@@ -44,74 +44,83 @@ const elements = [
       
 ]
 
-
-
 //prendo gli elementi necessari dal DOM
 const container = document.getElementById('container')
-const button = document.querySelector("like-button")
 
 
 // creo un cclo che mi permetta di stampare gli elementi in pagina
 
-    let card = ''
-    for(let i=0; i < elements.length; i++ ){
-      const cards = elements[i];
+let card = ''
+for(let i=0; i < elements.length; i++ ){
+  const cards = elements[i];
+  
+  // trasformo la data americana in EU
+  
+  var date = new Date(cards.date);
+  console.log(date)
+  const euDate = date.getDate()+"/"+(date.getMonth() + 1)+"/"+date.getFullYear();
+  console.log(euDate)
 
-// trasformo la data americana in EU
-
-      var date = new Date(cards.date);
-      console.log(date)
-      const euDate = date.getDate()+"/"+(date.getMonth() + 1)+"/"+date.getFullYear();
-      console.log(euDate)
-
-
-      card += `
-      <div class="post">
-      <div class="post__header">
+  
+  card += `
+  <div class="post">
+  <div class="post__header">
         <div class="post-meta">
           <div class="post-meta__icon">
-            <img class="profile-pic img-fluid" src="${cards.foto}" alt="" />
+          <img class="profile-pic img-fluid" src="${cards.foto}" alt="" />
           </div>
           <div class="post-meta__data">
-            <div class="post-meta__author">
-            ${cards.name}
-            </div>
-            <div class="post-meta__time">${euDate}</div>
+          <div class="post-meta__author">
+          ${cards.name}
           </div>
-        </div>
+          <div class="post-meta__time">${euDate}</div>
+          </div>
+          </div>
       </div>
       <div class="post__text">
-        ${cards.text}
+      ${cards.text}
       </div>
       <div class="post__image">
-        <img src="${cards.coreImg}" alt="${cards.name}" />
+      <img src="${cards.coreImg}" alt="${cards.name}" />
       </div>
       <div class="post__footer">
-        <div class="likes js-likes">
-          <div class="likes__cta">
-            <button class="like-button js-like-button" href="#" data-postid="1">
-              <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
-              <span class="like-button__label">Mi Piace</span>
-            </button>
+      <div class="likes js-likes">
+      <div class="likes__cta">
+      <button class="like-button js-like-button" href="#" data-postid="1">
+      <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+        <span class="like-button__label">Mi Piace</span>
+        </button>
           </div>
           <div class="likes__counter">Piace a <b id="like-counter-1" class="js-likes-counter">${cards.likes}</b> persone</div>
-        </div>
-      </div>
-    </div>`
-    }
-  
-    container.innerHTML = card
-    console.log(card)
-  
+          </div>
+          </div>
+          </div>`
+            }
+            
+            container.innerHTML = card
+            
+            
+    const button = document.querySelectorAll(".like-button")
+    const contatori = document.querySelectorAll(".js-likes-counter")
+
 // aggiungo un event listener per modificare il button like
 
-    let textButton = document.querySelector("like-button__label")
+    let textButton = document.querySelectorAll(".like-button__label")
     console.log(textButton)
 
-    for(i=0; i < button; i++){
+    console.log(button) 
+    elements.forEach((element) =>{
+      let likeIndex = element.likes
+     console.log(likeIndex)
+     
+     for(let i=0; i < button.length; i++){
+       button[i].addEventListener("click", function(){
+         button[i].classList.add("like-button--liked");
+        })}
+      });
+         
+         
 
-    button[i].addEventListener("click", function(){
-    textButton.classList.add("like-button--liked");
+    
 
-    })}
 
