@@ -9,7 +9,7 @@ const elements = [
             name:'Ryan Reinolds',
             foto: 'img/austin-wade-X6Uj51n5CE8-unsplash.jpg',
             date: '05-03-2022',
-            text: 'everything has a price',
+            text: 'history is build by man',
             coreImg: 'img/mr-cup-fabien-barral-Fo5dTm6ID1Y-unsplash.jpg',
             likes: 23
         },
@@ -27,7 +27,7 @@ const elements = [
             name:'Jackson David',
             foto: 'img/jackson-david-TqUiHBMG7Rc-unsplash.jpg',
             date: '09-14-2022',
-            text: 'everything has a price',
+            text: 'this planet is wonderfull!',
             coreImg: 'img/benigno-hoyuela-7Z-Uayu13ps-unsplash.jpg',
             likes: 10
            },
@@ -36,7 +36,7 @@ const elements = [
             name:'Charlie Green',
             foto: 'img/charlie-green-3JmfENcL24M-unsplash.jpg',
             date: '12-04-2022',
-            text: 'everything has a price',
+            text: 'mountains are so chill',
             coreImg: 'img/garrett-parker-DlkF4-dbCOU-unsplash.jpg',
             likes: 23
            },
@@ -46,8 +46,9 @@ const elements = [
 
 
 
-//prendo gli elementi "contenitore"
+//prendo gli elementi necessari dal DOM
 const container = document.getElementById('container')
+const button = document.getElementById('button')
 
 
 // creo una funzione che mi permetta di creare elementi in pagina
@@ -56,10 +57,14 @@ const container = document.getElementById('container')
     let card = ''
     for(let i=0; i < elements.length; i++ ){
       const cards = elements[i];
+
+// trasformo la data americana in EU
+
       var date = new Date(cards.date);
       console.log(date)
       const euDate = date.getDate()+"/"+(date.getMonth() + 1)+"/"+date.getFullYear();
       console.log(euDate)
+
 
       card += `
       <div class="post">
@@ -85,9 +90,9 @@ const container = document.getElementById('container')
       <div class="post__footer">
         <div class="likes js-likes">
           <div class="likes__cta">
-            <button class="like-button js-like-button" href="#" data-postid="1">
+            <button id=button class="like-button js-like-button" href="#" data-postid="1">
               <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
-              <span class="like-button__label">Mi Piace</span>
+              <span id=textButton class="like-button__label">Mi Piace</span>
             </button>
           </div>
           <div class="likes__counter">Piace a <b id="like-counter-1" class="js-likes-counter">${cards.likes}</b> persone</div>
@@ -99,5 +104,11 @@ const container = document.getElementById('container')
     container.innerHTML = card
     console.log(card)
   
-    
- 
+// aggiungo un event listener per modificare il button like
+
+    let textButton = document.getElementById('textButton')
+
+    button.addEventListener("click", function(){
+    textButton.classList.add("like-button--liked");
+    });
+
