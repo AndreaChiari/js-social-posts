@@ -48,11 +48,10 @@ const elements = [
 
 //prendo gli elementi necessari dal DOM
 const container = document.getElementById('container')
-const button = document.getElementById('button')
+const button = document.querySelector("like-button")
 
 
-// creo una funzione che mi permetta di creare elementi in pagina
-
+// creo un cclo che mi permetta di stampare gli elementi in pagina
 
     let card = ''
     for(let i=0; i < elements.length; i++ ){
@@ -90,9 +89,9 @@ const button = document.getElementById('button')
       <div class="post__footer">
         <div class="likes js-likes">
           <div class="likes__cta">
-            <button id=button class="like-button js-like-button" href="#" data-postid="1">
+            <button class="like-button js-like-button" href="#" data-postid="1">
               <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
-              <span id=textButton class="like-button__label">Mi Piace</span>
+              <span class="like-button__label">Mi Piace</span>
             </button>
           </div>
           <div class="likes__counter">Piace a <b id="like-counter-1" class="js-likes-counter">${cards.likes}</b> persone</div>
@@ -106,9 +105,13 @@ const button = document.getElementById('button')
   
 // aggiungo un event listener per modificare il button like
 
-    let textButton = document.getElementById('textButton')
+    let textButton = document.querySelector("like-button__label")
+    console.log(textButton)
 
-    button.addEventListener("click", function(){
+    for(i=0; i < button; i++){
+
+    button[i].addEventListener("click", function(){
     textButton.classList.add("like-button--liked");
-    });
+
+    })}
 
