@@ -112,13 +112,18 @@ for(let i=0; i < elements.length; i++ ){
      for(let i=0; i < button.length; i++){
        button[i].addEventListener("click", function(){
          button[i].classList.add("like-button--liked");
-          const numberIncrease = elements[i].likes++
+          const numberIncrease = elements[i].likes
           contatore[i].innerText = numberIncrease+1
-          console.log(numberIncrease)
-
+          if(numberIncrease+1){
+            button[i].addEventListener("click", function(){
+            contatore[i].innerText = numberIncrease
+            button[i].classList.remove("like-button--liked");
+            
+        })} 
           
          
         })}
+         
       
 
     
